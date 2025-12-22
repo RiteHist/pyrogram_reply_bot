@@ -2,7 +2,14 @@ import os
 from dotenv import load_dotenv
 from pyrogram import Client
 from pyrogram.filters import user
+import sentry_sdk
 
+sentry_sdk.init(
+    dsn="https://97d3e26c7725ca8bbf13fece01eefde1@o1347361.ingest.us.sentry.io/4510576412000256",
+    release="v1.0",
+    keep_alive=True,
+    send_default_pii=True
+)
 
 if not os.path.exists('me.session'):
     load_dotenv()
