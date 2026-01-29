@@ -6,12 +6,13 @@ import sentry_sdk
 
 load_dotenv()
 
-sentry_sdk.init(
-    dsn=os.getenv("SENTRY_DSN"),
-    release="v1.0",
-    keep_alive=True,
-    send_default_pii=True
-)
+if os.getenv("SENTRY_DSN"):
+    sentry_sdk.init(
+        dsn=os.getenv("SENTRY_DSN"),
+        release="v1.0",
+        keep_alive=True,
+        send_default_pii=True
+    )
 
 if not os.path.exists('me.session'):
     api_id = int(os.getenv("API_ID"))
