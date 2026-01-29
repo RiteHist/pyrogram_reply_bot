@@ -26,6 +26,9 @@ else:
 
 @app.on_message(filters=user('MultiFactorBot'))
 async def handle_bot(client, message):
-    await message.click('Yes')
+    try:
+        await message.click('Yes')
+    except (TimeoutError, ValueError):
+        pass
 
 app.run()
